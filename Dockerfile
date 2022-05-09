@@ -39,7 +39,6 @@ RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
         zip \
         pcntl \
         pdo_mysql \
-        gearman \
     ;
 # Override the default PHP8 & FPM configs
 # COPY ./php/php.ini /etc/php8/conf.d/30-custom.ini
@@ -183,6 +182,20 @@ WORKDIR /tmp
         CC=clang CFLAGS="-pipe -O" ./configure $config ; \
         make -j$(getconf _NPROCESSORS_ONLN) ; \
         make install ;
+
+# RUN \
+#     pip3 install -U \
+#     certbot \
+#     certbot-dns-cloudflare \
+#     certbot-dns-digitalocean \
+#     certbot-dns-google \
+#     certbot-dns-linode \
+#     certbot-dns-rfc2136 \
+#     certbot-dns-route53 \
+#     certbot-dns-vultr \
+#     certbot-plugin-gandi \
+#     cryptography \
+#     requests;
 
 RUN \
     # Install Filament
